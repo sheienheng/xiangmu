@@ -1,0 +1,77 @@
+<% include header%>
+<%if(user){%>
+<div class="container">
+  <div class="Search">
+    <span>
+      <form action="/search" method="get">
+        <label>搜索：</label><input class="search" type="text" name="keyword" placeholder="请搜索客户名">
+      </form>
+    </span>
+    <p>
+      <a href="/people" class="play">
+          <span class="btn btn-info">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true" style="margin: 0"></span>
+              添加</span>
+      </a>
+      <span class="delAll btn btn-info" onclick="return del()">
+          <span class="glyphicon glyphicon-trash" aria-hidden="true" style="margin: 0"></span>
+          删除</span>
+    </p>
+
+  </div>
+
+  <table class="table table-striped tabShow">
+    <thead>
+    <tr>
+      <th style="width: 8%"><input id="CheckAll"  type="checkbox" > 全选</th>
+      <th style="width: 12%">客户名</th>
+      <th style="width: 10%">年龄</th>
+      <th style="width: 14%">手机号</th>
+      <th style="width: 18%">邮箱</th>
+      <th style="width: 22%">
+          <span class="sort">
+              时间
+              <% if(bool == true){%>
+              <a href="?a=1">
+                  <span class="glyphicon glyphicon-sort" aria-hidden="true"></span>
+              </a>
+              <% }if(bool == false){%>
+              <a href="?a=-1">
+                  <span class="glyphicon glyphicon-sort" aria-hidden="true" style="color: #337ab7"></span>
+              </a>
+              <%}%>
+          </span>
+      </th>
+
+      <th style="width: 16%">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+
+      <%for(var i in doc){ if(doc[i].Pname != user.name)continue;%>
+        <tr>
+          <td style="line-height: 34px"> <input data-id="<%=doc[i]._id%>" class="chkItem" name="chkItem" class="input" type="checkbox" /></td>
+          <td style="line-height: 34px"><%=doc[i].Name %></td>
+          <td style="line-height: 34px"><%=doc[i].Age %></td>
+          <td style="line-height: 34px"><%=doc[i].Phone %></td>
+          <td style="line-height: 34px"><%=doc[i].Email %></td>
+          <td style="line-height: 34px"><%=doc[i].time %></td>
+          <td style="line-height: 34px"><a href="/edit/<%= doc[i]._id %>" class="btn btn-success">
+                  <span class="glyphicon glyphicon-edit" aria-hidden="true" style="margin: 0"></span>
+                  编辑</a>&#x3000;
+            <a href="/remove/<%=doc[i]._id %>" class="btn btn-info" onclick="return del()">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true" style="margin: 0"></span>
+                删除</a></td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+
+<% include paging %>
+<%}else {%>
+<div class="container">
+    <h1 style="text-align: center">亲，你还没有登录！</h1>
+</div>
+<%}%>
+<% include footer %>

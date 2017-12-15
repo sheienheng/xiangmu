@@ -1,0 +1,33 @@
+<% include header%>
+
+<div class="container web-body" style="margin-top:100px;width: 900px;">
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="height: 50px;">
+                    <div class="panel-title" style="text-align: left">修改客户信息</div>
+                </div>
+                <div class="panel-body" style="padding: 30px 50px 0 50px;">
+                    <form action="/edit/<%= doc[0].Name%>" class="form-horizontal" role="form" method="post" >
+                        <div class="form-group" style="margin-bottom: 15px;">
+                            客户名：<input type="text" class="form-control" name="Name" value="<%= doc[0].Name %>" disabled/>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 15px;">
+                            年龄：<input type="text" class="form-control" name="Age" value="<%= doc[0].Age %>" />
+                        </div>
+                        <div class="form-group" style="margin-bottom: 15px;">
+                            手机：<input type="text" class="form-control" name="Phone" value="<%= doc[0].Phone %>" />
+                        </div>
+                        <div class="form-group" style="margin-bottom: 30px;">
+                            邮箱：<input type="email" class="form-control" name="Email" value="<%= doc[0].Email %>"/>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 50px;">
+                            <input type="submit" class="btn btn-success btn-block" value="修改" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% include footer%>

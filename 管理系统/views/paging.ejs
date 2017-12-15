@@ -1,0 +1,27 @@
+<br>
+<div class="container btnGroup">
+    <% if(boolA == false){ %>
+    <ul class="pagination">
+        <%for(var i = 0;i < (length /6);i++){%>
+        <li><a href="?page=<%=i+1%>"><%=i+1%></a></li>
+        <%}%>
+    </ul>
+
+    <% }else {%>
+        <% if(bool != true){%>
+            <ul class="pagination">
+                <%for(var i = 0;i < (length /6);i++){%>
+                <li><a href="?a=1&page=<%=i+1%>"><%=i+1%></a></li>
+                <%}%>
+            </ul>
+
+        <% }else {%>
+            <ul class="pagination">
+                <%for(var i = 0;i < (length /6);i++){%>
+                <li><a href="?a=-1&page=<%=i+1%>"><%=i+1%></a></li>
+                <%}%>
+            </ul>
+
+        <% } %>
+    <% } %>
+</div>

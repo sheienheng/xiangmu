@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+    <script src="/javascripts/jquery.js"></script>
+    <script src="/javascripts/index.js"></script>
+    <script src="/bootstrap/js/bootstrap.js"></script>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="head">
+            <h1><%= title %></h1>
+            <div>
+
+                <span><a href="/"> 首页 </a></span>
+                <% if(user){ %>
+                &#x3000;欢迎你    <span style="color: red;"><%= user.name %></span>&#x3000;
+                <span><a href="/logout" onclick="return logout()">退出</a></span>
+                <%}else{ %>
+                <span><a href="/login">登录</a></span>
+                <span><a href="/reg">注册</a></span>
+                <% } %>
+
+            </div>
+        </div>
+
+    </div>
+</header>
+<div class="container">
+    <article>
+        <% if (success) { %>
+        <div style="color: red;" ><%= success %></div>
+        <% } %>
+        <% if (error) { %>
+        <div style="color: red;"><%= error %> </div>
+        <% } %>
+    </article>
+</div>
