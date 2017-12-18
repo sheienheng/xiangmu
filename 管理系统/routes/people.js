@@ -7,7 +7,7 @@ module.exports = function (app) {
             return res.redirect('/login');
         }else {
             res.render('people', {
-                title: '注册页面',
+                title: '添加页面',
                 user: req.session.user,
                 success: req.flash('success').toString(),
                 error: req.flash('error').toString()
