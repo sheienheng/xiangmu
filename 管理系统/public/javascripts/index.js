@@ -19,22 +19,25 @@ $('#CheckAll').click(function(){
 
 function del(){
     if(!confirm("是否要彻底删除选中项！！！")){
-        window.event.returnValue = false;
+        window.event.returnValue = false;//
     }
-    $('.chkItem:checked').each(function(){
-        var id = $(this).attr('data-id');
-        console.log(id);
-        var data = { "id": id};
-        $.ajax({
-            url:'/clearing',
-            type:'post',
-            data:data,
-            success:function(data,status){
+    if(window.event.returnValue == true){
+        $('.chkItem:checked').each(function(){
+            var id = $(this).attr('data-id');
+            console.log(id);
+            var data = { "id": id};
+            $.ajax({
+                url:'/clearing',
+                type:'post',
+                data:data,
+                success:function(data,status){
 
-            },
-            error:function(data,status){
+                },
+                error:function(data,status){
 
-            }
-        });
-    });location.href = "/";
+                }
+            });
+        });location.href = "/";
+    }
+
 }
